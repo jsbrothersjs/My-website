@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>শুভ জন্মদিন, মেধা 🏮</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Tiro+Bangla&display=swap" rel="stylesheet">
+<style>
+:root{--night:#120c33;--deep:#2a1c6b;--amber:#ffb547;--rose:#ff7a9c;--paper:#fff3dc;--ink:#2a1b4d;--glass:#ffffff14;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:linear-gradient(180deg,hsl(var(--h,255) 55% 22%),hsl(calc(var(--h,255) + 40) 55% 10%)) fixed;color:var(--paper);font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;line-height:1.75;overflow-x:hidden}
+h1,h2,.serif{font-family:'Tiro Bangla','Noto Serif Bengali',serif;font-weight:400;margin:0}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#bg{z-index:0}#fx{z-index:9}
+section{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:56px 22px}
+#main{display:none}
+button{font:inherit;font-weight:600;color:var(--ink);background:linear-gradient(135deg,#ffd98a,var(--amber));border:0;border-radius:999px;padding:14px 28px;font-size:18px;cursor:pointer;box-shadow:0 6px 26px #ffb54755}
+button:active{transform:scale(.96)}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+h2{font-size:clamp(26px,7vw,38px);margin-bottom:8px}
+.sub{margin:0 0 22px;opacity:.8;max-width:34ch}
+/* intro gift */
+.gift{position:relative;width:150px;height:140px;margin-bottom:26px;animation:shake 2.6s ease-in-out infinite}
+.gift .b{position:absolute;bottom:0;width:150px;height:100px;border-radius:8px;background:linear-gradient(135deg,var(--rose),#c2416d)}
+.gift .l{position:absolute;top:0;left:-8px;width:166px;height:46px;border-radius:8px;background:linear-gradient(135deg,#ff93b0,#d9507d);transition:transform .7s}
+.gift .r1{position:absolute;left:64px;top:0;width:22px;height:140px;background:var(--amber)}
+.gift .r2{position:absolute;left:0;top:70px;width:150px;height:20px;background:var(--amber);opacity:.9}
+.gift.open{animation:none}.gift.open .l{transform:translateY(-60px) rotate(-14deg)}
+@keyframes shake{0%,70%,100%{transform:rotate(0)}75%{transform:rotate(-4deg)}85%{transform:rotate(4deg)}}
+#intro h1{font-size:clamp(30px,8vw,46px);margin-bottom:10px}
+#intro p{margin:0 0 26px;opacity:.85;max-width:30ch}
+/* hero */
+.hero h1{font-size:clamp(38px,11vw,70px);line-height:1.3}
+.name{background:linear-gradient(90deg,#ff6b6b,#ffd166,#7bed9f,#4dc3ff,#b69cff,#ff7ac8,#ff6b6b);background-size:300% 100%;animation:rb 6s linear infinite;-webkit-background-clip:text;background-clip:text;color:transparent}@keyframes rb{to{background-position:300% 0}}
+.age{font-family:'Tiro Bangla',serif;font-size:clamp(110px,34vw,200px);line-height:1;color:var(--rose);text-shadow:0 0 50px #ff7a9c77;margin:4px 0}
+.clock{display:flex;gap:10px;margin-top:10px}
+.clock div{background:var(--glass);border:1px solid #ffffff22;border-radius:14px;padding:8px 12px;min-width:66px}
+.clock b{display:block;font-size:24px;font-family:'Tiro Bangla',serif;color:var(--amber);font-weight:400}
+.clock span{font-size:13px;opacity:.8}
+.hint{margin-top:30px;opacity:.7;font-size:15px}
+/* timeline */
+.tl{position:relative;max-width:420px;text-align:left;padding-left:28px;border-left:2px dashed #ffb54788}
+.tl div{position:relative;margin-bottom:30px}
+.tl div::before{content:"";position:absolute;left:-37px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--amber);box-shadow:0 0 14px var(--amber)}
+.tl div.pink::before{background:var(--rose);box-shadow:0 0 14px var(--rose)}
+.tl h3{margin:0;font-family:'Tiro Bangla',serif;font-weight:400;font-size:24px;color:var(--amber)}
+.tl p{margin:2px 0 0;font-size:18px}
+/* letter */
+.letter{background:var(--paper);color:var(--ink);border-radius:6px 24px 6px 24px;max-width:460px;padding:32px 26px;text-align:left;box-shadow:0 20px 60px #0008}
+.letter h2{font-size:28px;margin-bottom:12px}
+.letter p{margin:0 0 14px;font-size:18.5px;opacity:0;transition:opacity 1s}
+.letter p.in{opacity:1}
+.letter .sig{text-align:right;font-family:'Tiro Bangla',serif;font-size:25px}
+/* cake */
+.cake{position:relative;width:230px;margin:10px auto 6px}
+.cake .c{display:flex;flex-wrap:wrap;justify-content:center;gap:7px 8px;padding:0 16px;height:70px;align-content:flex-end}
+.cd{position:relative;width:6px;height:26px;background:#fff3dc;border-radius:2px}
+.cd::before{content:"";position:absolute;left:-2px;top:-14px;width:10px;height:14px;border-radius:50% 50% 50% 50%/70% 70% 30% 30%;background:radial-gradient(#fff6c2,var(--amber) 60%,#f26a2e);box-shadow:0 0 12px var(--amber);transition:opacity .5s,transform .5s;animation:fl .5s ease-in-out infinite alternate}
+.out .cd::before{opacity:0;transform:translateY(-6px);animation:none}
+@keyframes fl{to{transform:scale(1.15,.9)}}
+.cake .t1{height:44px;background:linear-gradient(#ffb3c8,var(--rose));border-radius:10px 10px 0 0}
+.cake .t2{height:54px;background:linear-gradient(#ffe2b3,#e99a4b);border-radius:0 0 10px 10px}
+.cake .pl{height:10px;margin:0 -16px;border-radius:99px;background:#fff3dc}
+#cakeMsg{min-height:62px;margin-top:16px;font-family:'Tiro Bangla',serif;font-size:24px;color:var(--amber)}
+/* flip cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:420px;width:100%}
+.card{perspective:700px;height:130px;cursor:pointer;background:none;border:0;padding:0;color:inherit;font:inherit;font-weight:400;box-shadow:none;border-radius:18px}
+.card i{position:absolute;inset:0;border-radius:18px;display:flex;align-items:center;justify-content:center;padding:10px;backface-visibility:hidden;transition:transform .6s;font-style:normal}
+.card .f{background:var(--glass);border:1px solid #ffffff2a;font-family:'Tiro Bangla',serif;font-size:21px}
+.card .k{background:linear-gradient(135deg,var(--rose),#b04a9a);transform:rotateY(180deg);font-size:15px;line-height:1.5;color:#fff}
+.card{position:relative}.card.on .f{transform:rotateY(180deg)}.card.on .k{transform:rotateY(0)}
+/* wish */
+#wish{min-height:110px;max-width:400px;font-family:'Tiro Bangla',serif;font-size:clamp(22px,6vw,28px);line-height:1.5;margin:14px 0;opacity:0;transition:opacity .5s}
+#wish.on{opacity:1}
+#count{margin-top:12px;opacity:.85}
+.fly{position:fixed;bottom:-110px;z-index:5;pointer-events:none;animation:up var(--d) ease-in forwards}
+.lantern{filter:drop-shadow(0 0 20px #ffb547aa)}
+.lantern i{display:block;width:100%;height:100%;border-radius:46% 46% 38% 38%/58% 58% 42% 42%;background:radial-gradient(circle at 50% 70%,#fff2b8,var(--amber) 55%,#e0742a)}
+@keyframes up{to{transform:translate(var(--x),-125vh) rotate(8deg);opacity:.1}}
+/* kind words */
+#kind{min-height:100px;max-width:380px;font-family:'Tiro Bangla',serif;font-size:25px;line-height:1.5;margin-bottom:20px}
+/* final */
+.final p{max-width:420px;font-size:20px}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+button.ghost{background:var(--glass);color:var(--paper);box-shadow:none;border:1px solid #ffffff3a}
+#note{min-height:26px;margin-top:12px;opacity:.85}
+.btn{display:inline-block;text-decoration:none;font-weight:600;color:var(--ink);background:linear-gradient(135deg,#ffd98a,var(--amber));border-radius:999px;padding:13px 24px;font-size:17px;box-shadow:0 6px 26px #ffb54755}
+.btn.alt{background:linear-gradient(135deg,#9be7c4,#41c28a)}
+.btn.sms{background:linear-gradient(135deg,#b69cff,#7a5cf0);color:#fff}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.em{padding:8px 16px;font-size:28px}.em.sel{outline:2px solid var(--amber);background:#ffb54733}
+#pg{position:fixed;z-index:30;left:0;top:env(safe-area-inset-top,0px);height:5px;width:0;background:linear-gradient(90deg,#ff4d6d,#ffb547,#ffe94d,#5be37d,#4dc3ff,#7a5cf0,#ff7ac8)}
+.vh{max-width:380px;font-size:15px;opacity:.8;margin-top:14px}
+.chb{padding:9px 16px;font-size:15px;background:var(--glass);color:#fff;box-shadow:none;border:1px solid #ffffff3a}
+.chb.on{background:var(--amber);color:var(--ink)}
+#other{width:100%;max-width:430px;margin-top:16px;padding:13px 16px;border-radius:14px;border:1px solid #ffffff44;background:#ffffff14;color:#fff;font:inherit;font-size:16px}
+#other::placeholder{color:#ffffff99}
+.arc{width:min(300px,80vw);aspect-ratio:2/1;margin-bottom:8px;background:radial-gradient(circle farthest-side at 50% 100%,transparent 36%,#ff4d6d 36% 43%,#ffb547 43% 50%,#ffe94d 50% 57%,#5be37d 57% 64%,#4dc3ff 64% 71%,#7a5cf0 71% 78%,transparent 78%);filter:drop-shadow(0 0 18px #ffffff66)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:430px;width:100%}
+.pr{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border-radius:16px;background:var(--glass);color:var(--paper);border:1px solid #ffffff2a;box-shadow:none;font-size:14px;font-weight:500;line-height:1.3;transition:transform .25s}
+.pr span{font-size:34px;line-height:1.1}.pr small{font-size:11px;opacity:.7;font-weight:400}
+.pr.sel{background:linear-gradient(135deg,#ff7a9c99,#ffb54799);border-color:#fff;transform:scale(1.06)}
+#songs{position:fixed;z-index:20;right:14px;top:calc(env(safe-area-inset-top,0px) + 68px);background:#1b1250ee;border:1px solid #ffffff33;border-radius:16px;padding:8px;display:none;flex-direction:column;gap:6px;backdrop-filter:blur(10px)}
+#songs.o{display:flex}
+#songs button{background:var(--glass);color:#fff;box-shadow:none;font-size:16px;padding:10px 16px;border-radius:12px;text-align:left}
+#songs button.on{background:var(--amber);color:var(--ink)}
+.rv>*{opacity:0;transform:translateY(26px) scale(.97);transition:opacity .8s,transform .8s}
+.rv.in>*{opacity:1;transform:none}
+.rv.in>*:nth-child(2){transition-delay:.12s}.rv.in>*:nth-child(3){transition-delay:.24s}.rv.in>*:nth-child(n+4){transition-delay:.36s}
+@media (prefers-reduced-motion:reduce){.rv>*{opacity:1;transform:none;transition:none}.name{animation:none}}
+#mus{position:fixed;z-index:20;right:14px;top:calc(env(safe-area-inset-top,0px) + 12px);width:48px;height:48px;padding:0;font-size:22px;display:none;background:var(--glass);color:#fff;border:1px solid #ffffff3a;box-shadow:none}
+.heart{position:fixed;z-index:8;pointer-events:none;font-size:26px;animation:hp 1.6s ease-out forwards}
+@keyframes hp{to{transform:translateY(-130px) scale(1.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){.gift,.cd::before{animation:none}.fly{animation-duration:2s!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="pg"></div><canvas id="bg"></canvas><canvas id="fx"></canvas><canvas id="tr"></canvas>
+<button id="mus" aria-label="গান বেছে নাও">🎵</button><div id="songs"></div>
+
+<section id="intro">
+  <div class="gift" id="gift"><div class="b"></div><div class="r1"></div><div class="r2"></div><div class="l"></div></div>
+  <h1>মেধা, এটা শুধু তোমার জন্য</h1>
+  <p>একটা ছোট্ট জগৎ বানিয়েছি তোমার জন্মদিনে। ফোনের আওয়াজ চালু রেখো, গান আছে 🎶</p>
+  <button id="open">উপহারটা খোলো 🎁</button>
+</section>
+
+<main id="main">
+  <section class="hero">
+    <div class="arc"></div>
+    <h1>শুভ জন্মদিন,<br><span class="name">জান্নাতুল ফেরদৌস মেধা</span></h1>
+    <div class="age" id="age18" role="button" tabindex="0">১৮</div><div id="sec" style="min-height:30px;color:var(--amber)"></div>
+    <div>১৩ নভেম্বর ২০০৮ এ তুমি এই পৃথিবীতে এসেছিলে</div>
+    <div class="clock" aria-label="তোমার বয়স">
+      <div><b id="cd">০</b><span>দিন</span></div><div><b id="ch">০</b><span>ঘণ্টা</span></div><div><b id="cm">০</b><span>মিনিট</span></div><div><b id="cs">০</b><span>সেকেন্ড</span></div>
+    </div>
+    <div class="hint">নিচে নামতে থাকো ↓ আর যেকোনো জায়গায় ছুঁয়ে দেখো ❤️</div>
+  </section>
+
+  <section>
+    <h2>আমাদের গল্প</h2>
+    <p class="sub">ছোট্ট একটা পথচলা, দূরত্ব আর আবার ফিরে আসা</p>
+    <div class="tl">
+      <div><h3>ক্লাস ফাইভ</h3><p>আমরা একই ক্লাসের ক্লাসমেট ছিলাম।</p></div>
+      <div class="pink"><h3>২০১৮</h3><p>সময়ের স্রোতে দুজন দুজনের থেকে অনেক দূরে চলে গেলাম।</p></div>
+      <div><h3>আবার নতুন করে</h3><p>এতদিন পর আবার কথা বলছি। আর সত্যি বলতে, খুব ভালো লাগছে।</p></div>
+      <div class="pink"><h3>১৩ নভেম্বর ২০২৬</h3><p>তুমি আঠারো বছরের। আর এটা আমার ছোট্ট উপহার।</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="letter" id="letter">
+      <h2>প্রিয় মেধা,</h2>
+      <p>আজ তোমার জন্মদিন, তুমি আঠারোয় পা দিলে। এত বড় একটা দিনে কী উপহার দেব, অনেক ভেবেছি। শেষে নিজের হাতে এই ছোট্ট জগৎটা বানালাম, শুধু তোমার জন্য।</p>
+      <p>ক্লাস ফাইভে আমরা ক্লাসমেট ছিলাম। তারপর ২০১৮ সাল থেকে কীভাবে যেন দুজন অনেক দূরে চলে গেলাম। সময় আমাদের আলাদা করে দিয়েছিল, কিন্তু কিছু মানুষ মনের ভেতর থেকে কখনো হারিয়ে যায় না।</p>
+      <p>এখন আবার তোমার সাথে কথা বলতে পারছি, আর এটা আমার কাছে সত্যিই অনেক ভালো লাগার ব্যাপার। মনে হয় যেন হারিয়ে যাওয়া একটা সুন্দর জিনিস ফিরে পেয়েছি।</p>
+      <p>তুমি আমার খুব কাছের বন্ধু। তোমার জন্য আমার মনে অনেক মায়া, অনেক ভালোবাসা, অনেক শুভকামনা। আমি চাই তুমি সবসময় হাসিখুশি থাকো, তোমার সব স্বপ্ন পূরণ হোক।</p>
+      <p>আর এই বন্ধুত্বটা যেন আর কখনো দূরত্বে হারিয়ে না যায়। আজকের দিনটা পুরোটাই তোমার। আজ তুমি পৃথিবীর সবচেয়ে খুশি মানুষ হও।</p>
+      <p class="sig">ইতি, তোমার বন্ধু জাকারিয়া</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>কেক কাটার আগে...</h2>
+    <p class="sub">১৮টা মোমবাতি জ্বলছে। মনে মনে একটা ইচ্ছে করো, তারপর ফুঁ দাও।</p>
+    <div class="cake" id="cake"><div class="c" id="cs18"></div><div class="t1"></div><div class="t2"></div><div class="pl"></div></div>
+    <button id="blow">ফুঁ দাও 💨</button>
+    <div id="cakeMsg"></div>
+  </section>
+
+  <section>
+    <h2>তোমার সম্পর্কে ছয়টা কথা</h2>
+    <p class="sub">কার্ডগুলো ছুঁয়ে উল্টাও</p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="sky">
+    <h2>১৮ বছরের ১৮টা ফানুস</h2>
+    <p class="sub">প্রতিটা ফানুসে একটা করে দোয়া</p>
+    <div id="wish" aria-live="polite"></div>
+    <button id="go">একটা ফানুস ছাড়ো 🏮</button>
+    <div id="count">০ / ১৮</div>
+  </section>
+
+  <section>
+    <h2>তোমার জন্য একটা কথা</h2>
+    <p class="sub">যতবার ইচ্ছে চাপো</p>
+    <div id="kind">চাপ দাও, দেখো কী আসে 💌</div>
+    <button id="nk">আরেকটা কথা শোনাও</button>
+  </section>
+
+  <section id="fav">
+    <h2>তোমার সবচেয়ে পছন্দের জিনিস কোনটা?</h2>
+    <p class="sub">যেগুলো ভালো লাগে ছুঁয়ে বেছে নাও, তারপর নিচের বাটন চাপো</p>
+    <div class="pgrid" id="prod"></div>
+    <input id="other" type="text" maxlength="200" placeholder="এখানে নেই? তোমার পছন্দের জিনিসের নাম লিখো ✍️">
+    <div id="plist" class="vh"></div>
+    <div class="chs row" style="margin-top:6px"></div>
+    <a class="btn" id="psend" target="_blank" rel="noopener" style="display:none;margin-top:14px">💌 আমার পছন্দ পাঠাও</a>
+  </section>
+
+  <section class="final">
+    <h2 class="name" style="font-size:clamp(34px,10vw,56px)">শুভ জন্মদিন, মেধা 🎂</h2>
+    <p>তুমি সবসময় ভালো থেকো, হাসিখুশি থেকো। কাছে থাকি বা দূরে, তোমার জন্য আমার দোয়া আর ভালোবাসা সবসময় থাকবে।</p>
+    <h3 class="serif" style="font-size:26px;margin:26px 0 6px;color:var(--amber)">তোমার পছন্দ হয়েছে কি?</h3>
+    <p class="vh" style="margin:0 0 4px">কোথায় পাঠাবে? একটা বেছে নাও</p>
+    <div class="chs row"></div>
+    <div class="row">
+      <a class="btn" id="yes" target="_blank" rel="noopener">হ্যাঁ 💛</a>
+      <a class="btn alt" id="sure" target="_blank" rel="noopener">অবশ্যই 😍</a>
+    </div>
+    <div class="row"><a class="btn sms" id="talk" target="_blank" rel="noopener">💬 কিছু লিখে পাঠাও</a></div>
+    <p class="vh" id="cnote">বাটন চাপলে মেসেজ লেখা অবস্থায় অ্যাপ খুলবে, শুধু Send চাপলেই জাকারিয়ার কাছে পৌঁছে যাবে 💛</p>
+    <div class="row"><button id="again">আবার কনফেটি 🎉</button></div>
+  </section>
+</main>
+
+<script>
+const $=id=>document.getElementById(id),bn=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+/* sky */
+const bg=$("bg"),b=bg.getContext("2d"),fx=$("fx"),x=fx.getContext("2d");let S=[],SH=null;
+function sz(){bg.width=fx.width=$("tr").width=innerWidth;bg.height=fx.height=$("tr").height=innerHeight;S=Array.from({length:110},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.3,p:Math.random()*6}))}
+sz();addEventListener("resize",sz);
+(function sky(t){b.clearRect(0,0,bg.width,bg.height);
+ S.forEach(s=>{b.globalAlpha=.35+.65*Math.abs(Math.sin(t/1200+s.p));b.fillStyle="#fff";b.beginPath();b.arc(s.x,s.y,s.r,0,7);b.fill()});
+ if(!RM&&!SH&&Math.random()<.004)SH={x:Math.random()*bg.width*.8+40,y:Math.random()*bg.height*.3,l:60};
+ if(SH){b.globalAlpha=SH.l/60;b.strokeStyle="#ffe9b0";b.lineWidth=2;b.beginPath();b.moveTo(SH.x,SH.y);b.lineTo(SH.x-40,SH.y-18);b.stroke();SH.x+=9;SH.y+=4;if(--SH.l<=0)SH=null}
+ requestAnimationFrame(sky)})(0);
+/* confetti */
+let P=[],run=false;
+function burst(n){const c=["#ffb547","#ff7a9c","#fff3dc","#8fd3ff","#b69cff"];
+ for(let i=0;i<n;i++)P.push({x:innerWidth/2,y:innerHeight*.55,vx:(Math.random()-.5)*14,vy:-Math.random()*15-3,s:Math.random()*7+4,c:c[i%5],r:Math.random()*6,l:140});
+ if(!run){run=true;tk()}}
+function tk(){x.clearRect(0,0,fx.width,fx.height);P=P.filter(p=>p.l>0);
+ P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.32;p.r+=.2;p.l--;x.globalAlpha=Math.min(1,p.l/40);x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()});
+ if(P.length)requestAnimationFrame(tk);else{run=false;x.clearRect(0,0,fx.width,fx.height)}}
+/* music: Happy Birthday via WebAudio */
+let ac,playing=false,timer;
+const F={C:261.6,D:293.7,E:329.6,F:349.2,G:392,A:440,B:493.9,H:523.3};
+const M=[["G",.5],["G",.5],["A",1],["G",1],["H",1],["B",2],["G",.5],["G",.5],["A",1],["G",1],["D",1],["H",2],["G",.5],["G",.5],["G",1],["E",1],["H",1],["B",1],["A",2],["F",.5],["F",.5],["E",1],["C",1],["D",1],["H",2]];
+let mg;function tone(f,t,d){if(!mg){mg=ac.createGain();mg.connect(ac.destination)}const o=ac.createOscillator(),g=ac.createGain();o.type="triangle";o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.16,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(mg);o.start(t);o.stop(t+d+.05)}
+const SONGS=[["🎂 হ্যাপি বার্থডে","G4:.5 G4:.5 A4:1 G4:1 C5:1 B4:2 G4:.5 G4:.5 A4:1 G4:1 D5:1 C5:2 G4:.5 G4:.5 G5:1 E5:1 C5:1 B4:1 A4:2 F5:.5 F5:.5 E5:1 C5:1 D5:1 C5:2"],["⭐ টুইংকল টুইংকল","C4:1 C4:1 G4:1 G4:1 A4:1 A4:1 G4:2 F4:1 F4:1 E4:1 E4:1 D4:1 D4:1 C4:2 G4:1 G4:1 F4:1 F4:1 E4:1 E4:1 D4:2 G4:1 G4:1 F4:1 F4:1 E4:1 E4:1 D4:2 C4:1 C4:1 G4:1 G4:1 A4:1 A4:1 G4:2 F4:1 F4:1 E4:1 E4:1 D4:1 D4:1 C4:2"],["🎶 ওড টু জয়","E4:1 E4:1 F4:1 G4:1 G4:1 F4:1 E4:1 D4:1 C4:1 C4:1 D4:1 E4:1 E4:1.5 D4:.5 D4:2 E4:1 E4:1 F4:1 G4:1 G4:1 F4:1 E4:1 D4:1 C4:1 C4:1 D4:1 E4:1 D4:1.5 C4:.5 C4:2"],["🌹 ফার এলিজ","E5:.5 D#5:.5 E5:.5 D#5:.5 E5:.5 B4:.5 D5:.5 C5:.5 A4:1.5 C4:.5 E4:.5 A4:.5 B4:1.5 E4:.5 G#4:.5 B4:.5 C5:1.5 E4:.5 E5:.5 D#5:.5 E5:.5 D#5:.5 E5:.5 B4:.5 D5:.5 C5:.5 A4:1.5"],["🌙 ঘুমপাড়ানি সুর","E4:.5 E4:.5 G4:2 E4:.5 E4:.5 G4:2 E4:.5 G4:.5 C5:1 B4:1 A4:1 A4:1 G4:2"],["🕊️ অ্যামেজিং গ্রেস","G4:1 C5:2 E5:.5 C5:.5 E5:2 D5:1 C5:2 A4:1 G4:3"]];
+let cur=0;const SN={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+function nf(n){const m=/^([A-G])(#?)(\d)$/.exec(n);return 440*Math.pow(2,(SN[m[1]]+(m[2]?1:0)+(+m[3]-4)*12-9)/12)}
+function song(){if(!playing)return;let t=ac.currentTime+.1;SONGS[cur][1].split(" ").forEach(x=>{const q=x.split(":"),d=+q[1];tone(nf(q[0]),t,d*.42);t+=d*.45});timer=setTimeout(song,(t-ac.currentTime+1.2)*1000)}
+function music(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();playing=on;clearTimeout(timer);$("mus").textContent=on?"🎵":"🔇";if(on){ac.resume();song()}}catch(e){}}
+function lit(i){document.querySelectorAll("#songs button").forEach((b,k)=>b.classList.toggle("on",k===i))}
+function pickSong(i){cur=i;if(mg){mg.disconnect();mg=null}lit(i);music(true);burst(40)}
+SONGS.forEach((q,i)=>{const b=document.createElement("button");b.textContent=q[0];b.onclick=()=>pickSong(i);$("songs").appendChild(b)});
+const so=document.createElement("button");so.textContent="🔇 বন্ধ করো";so.onclick=()=>{if(mg){mg.disconnect();mg=null}music(false);lit(-1)};$("songs").appendChild(so);lit(0);
+$("mus").onclick=()=>$("songs").classList.toggle("o");
+/* open */
+$("open").onclick=()=>{$("gift").classList.add("open");music(true);setTimeout(()=>{$("intro").style.display="none";$("main").style.display="block";$("mus").style.display="block";scrollTo(0,0);burst(170)},750)};
+/* live age */
+const born=new Date(2008,10,13,0,0,0);
+function age(){let d=Math.max(0,Date.now()-born),D=Math.floor(d/864e5);d-=D*864e5;const H=Math.floor(d/36e5);d-=H*36e5;const M2=Math.floor(d/6e4),Sx=Math.floor((d-M2*6e4)/1e3);
+ $("cd").textContent=bn(D.toLocaleString("en-US").replace(",",""));$("ch").textContent=bn(H);$("cm").textContent=bn(M2);$("cs").textContent=bn(Sx)}
+age();setInterval(age,1000);
+/* letter reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.6});
+document.querySelectorAll(".letter p").forEach(p=>io.observe(p));
+/* cake */
+$("cs18").innerHTML='<i class="cd"></i>'.repeat(18);
+$("blow").onclick=()=>{$("cake").classList.add("out");$("blow").style.display="none";$("cakeMsg").textContent="তোমার ইচ্ছেটা সত্যি হোক, মেধা ✨";burst(160)};
+/* cards */
+[["তোমার হাসি","তোমার হাসি দেখলে আশেপাশের সবার মনটাও ভালো হয়ে যায়।"],["তোমার মন","তুমি অনেক ভালো মনের একজন মানুষ, এটা আমি জানি।"],["আমাদের বন্ধুত্ব","দূরে গিয়েও যে বন্ধুত্ব ফিরে আসে, সেটা সত্যিকারের।"],["তোমার স্বপ্ন","তুমি যা স্বপ্ন দেখো, সেটা পূরণ করার ক্ষমতা তোমার আছে।"],["তোমার আলো","তুমি যেখানে থাকো, জায়গাটা একটু বেশি উজ্জ্বল হয়।"],["শুধু তুমি","তুমি যেমন আছো, ঠিক তেমনই অসাধারণ। বদলানোর দরকার নেই।"]]
+.forEach(([a,c])=>{const e=document.createElement("button");e.className="card";e.innerHTML="<i class='f'>"+a+"</i><i class='k'>"+c+"</i>";e.onclick=()=>e.classList.toggle("on");$("grid").appendChild(e)});
+/* lanterns */
+const W=["সবসময় এমন হাসিখুশি থেকো।","তোমার সব স্বপ্ন সত্যি হোক।","পড়াশোনায় অনেক বড় সাফল্য পাও।","মন খারাপের রাত যেন কখনো লম্বা না হয়।","তোমার চারপাশে সবসময় ভালো মানুষ থাকুক।","যা চাও, তার চেয়েও ভালো কিছু পাও।","সুস্থ থেকো, সুন্দর থেকো।","নিজের ওপর বিশ্বাস কখনো হারিয়ো না।","প্রতিটা সকাল নতুন সুখবর নিয়ে আসুক।","তোমার হাসি যেন কখনো না থামে।","আল্লাহ তোমাকে অনেক বরকত দিন।","ভয় পেলেও এগিয়ে যেও, তুমি পারবে।","আমাদের বন্ধুত্ব অনেক দীর্ঘ হোক।","তোমার প্রতিটা দিন রঙিন হোক।","কষ্টের পরে যেন সবসময় ভালো কিছু আসে।","তুমি যেখানেই যাও, আলো ছড়িয়ে দিও।","আঠারোয় নিজের পথটা নিজের মতো গড়ে নিও।","সবচেয়ে বড় দোয়া: তুমি সারাজীবন খুব খুশি থেকো।"];
+let n=0;
+$("go").onclick=()=>{if(n>=18)return;
+ const l=document.createElement("div");l.className="fly lantern";
+ l.style.cssText=`left:${8+Math.random()*80}%;--x:${(Math.random()-.5)*120}px;--d:${5+Math.random()*3}s;width:${44+Math.random()*30}px;height:${58+Math.random()*36}px`;
+ l.innerHTML="<i></i>";document.body.appendChild(l);setTimeout(()=>l.remove(),9000);
+ const w=$("wish"),i=n;w.classList.remove("on");setTimeout(()=>{w.textContent=W[i];w.classList.add("on")},180);
+ n++;$("count").textContent=bn(n)+" / ১৮";
+ if(n===18){$("go").style.display="none";setTimeout(()=>burst(200),600)}};
+/* kind words */
+const K=["তোমার সাথে আবার কথা বলতে পেরে আমি সত্যিই খুশি।","তুমি যে এত ভালো একজন মানুষ, এটা কি জানো?","আজকের দিনে তোমার মুখে শুধু হাসি থাকুক।","আঠারো বছরে পা দিলে, তোমার জন্য অনেক বড় কিছু অপেক্ষা করছে।","দূরত্ব এসেছিল, কিন্তু বন্ধুত্ব হারায়নি।","তুমি অনেক বেশি সম্মান আর ভালোবাসার যোগ্য।","মন খারাপ হলে মনে রেখো, আমি তোমার পাশে আছি।","তুমি যেমন, ঠিক তেমনই সবচেয়ে সুন্দর।"];
+let ki=-1;$("nk").onclick=()=>{let r;do r=Math.floor(Math.random()*K.length);while(r===ki);ki=r;$("kind").textContent=K[r];heart(innerWidth/2,innerHeight/2)};
+/* hearts on tap */
+function heart(px,py){const h=document.createElement("span");h.className="heart";h.textContent=["❤️","💛","💖","✨"][Math.floor(Math.random()*4)];h.style.left=px-13+"px";h.style.top=py-13+"px";document.body.appendChild(h);setTimeout(()=>h.remove(),1700)}
+document.addEventListener("pointerdown",e=>{if($("main").style.display==="block"&&!e.target.closest("button"))heart(e.clientX,e.clientY)});
+/* final */
+const tr=$("tr"),tg=tr.getContext("2d");let ST=[],sr=false;
+function star(c,x0,y0,r){c.beginPath();for(let i=0;i<10;i++){const q=i*Math.PI/5-Math.PI/2,rr=i%2?r*.4:r;c.lineTo(x0+Math.cos(q)*rr,y0+Math.sin(q)*rr)}c.closePath();c.fill()}
+function spark(px,py,n){for(let i=0;i<n;i++)ST.push({x:px,y:py,vx:(Math.random()-.5)*3,vy:(Math.random()-.5)*3-.6,s:Math.random()*8+4,h:Math.random()*360,l:45});if(!sr){sr=true;stk()}}
+function stk(){tg.clearRect(0,0,tr.width,tr.height);ST=ST.filter(p=>p.l>0);ST.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.05;p.l--;tg.globalAlpha=p.l/45;tg.fillStyle="hsl("+p.h+" 100% 70%)";star(tg,p.x,p.y,p.s*p.l/45+2)});if(ST.length)requestAnimationFrame(stk);else{sr=false;tg.clearRect(0,0,tr.width,tr.height)}}
+const on=()=>$("main").style.display==="block"&&!RM;
+addEventListener("pointerdown",e=>{if(on())spark(e.clientX,e.clientY,14)});
+addEventListener("pointermove",e=>{if(on())spark(e.clientX,e.clientY,2)});
+addEventListener("touchmove",e=>{const t=e.touches[0];if(t&&on())spark(t.clientX,t.clientY,2)},{passive:true});
+addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight,r=h>0?scrollY/h:0;$("pg").style.width=r*100+"%";document.documentElement.style.setProperty("--h",255+r*300);if(on()&&Math.random()<.5)spark(Math.random()*innerWidth,Math.random()*innerHeight*.9,1)});
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{threshold:.12});
+document.querySelectorAll("#main section:not(.hero)").forEach(q=>{q.classList.add("rv");rv.observe(q)});
+let t18=0;$("age18").onclick=()=>{if(++t18===3){$("sec").textContent="🤫 গোপন কথা: তোমাকে আবার ফিরে পেয়ে আমি সত্যিই খুশি, মেধা।";burst(140)}};
+const MSGR="";let CH="w";
+const T={yes:"জাকারিয়া, হ্যাঁ, তোমার উপহারটা আমার পছন্দ হয়েছে 💛",sure:"জাকারিয়া, অবশ্যই! উপহারটা আমার অনেক অনেক পছন্দ হয়েছে 😍",talk:"জাকারিয়া, ",psend:""};
+function lnk(t){return CH==="w"?"https://wa.me/8801724759827?text="+encodeURIComponent(t):CH==="s"?"sms:+8801724759827?body="+encodeURIComponent(t):"https://m.me/"+MSGR}
+function refresh(){for(const k in T){if(T[k])$(k).href=lnk(T[k])}document.querySelectorAll(".chb").forEach(b=>b.classList.toggle("on",b.dataset.c===CH))}
+document.querySelectorAll(".chs").forEach(c=>{[["w","💚 WhatsApp"],["s","💬 SMS"]].concat(MSGR?[["m","💙 Messenger"]]:[]).forEach(q=>{const b=document.createElement("button");b.className="chb";b.dataset.c=q[0];b.textContent=q[1];b.onclick=()=>{CH=q[0];refresh()};c.appendChild(b)})});
+["yes","sure","talk","psend"].forEach(i=>$(i).addEventListener("click",()=>{burst(150);if(CH==="m"&&navigator.clipboard)navigator.clipboard.writeText(T[i]).then(()=>{$("cnote").textContent="মেসেজ কপি হয়েছে, Messenger-এ পেস্ট করে Send দাও 💙"}).catch(()=>{})}));
+const PR=[["👜","হ্যান্ডব্যাগ","স্টাইলিশ ব্যাগ"],["💄","মেকআপ","লিপস্টিক ও মেকআপ কিট"],["🧴","স্কিনকেয়ার","ফেসওয়াশ, ময়েশ্চারাইজার, সানস্ক্রিন"],["🌸","পারফিউম","মিষ্টি সুগন্ধি"],["👗","জামা","সুন্দর ড্রেস বা থ্রি-পিস"],["💍","গহনা","রিং, দুল, নেকলেস"],["⌚","ঘড়ি","স্টাইলিশ হাতঘড়ি"],["👟","জুতা","স্নিকার বা স্যান্ডেল"],["🧸","টেডি বিয়ার","নরম পুতুল"],["🍫","চকলেট","চকলেট বক্স"],["📚","বই","গল্প বা উপন্যাস"],["🎧","হেডফোন","ইয়ারবাড বা হেডফোন"],["📱","মোবাইল","নতুন ফোন"],["🌹","ফুলের তোড়া","তাজা ফুল"],["🖼️","ফটো ফ্রেম","স্মৃতির ফ্রেম"],["🕯️","মোমবাতি","সুগন্ধি মোমবাতি"],["🎀","হেয়ার অ্যাকসেসরিজ","ক্লিপ, ব্যান্ড, স্ক্রাঞ্চি"],["🧣","স্কার্ফ","রঙিন স্কার্ফ বা ওড়না"],["🕶️","সানগ্লাস","স্টাইলিশ সানগ্লাস"],["🎂","কেক","ডিজাইনার কেক"]];
+PR.push(["🧥","হুডি","আরামদায়ক হুডি বা জ্যাকেট"],["🎒","ব্যাকপ্যাক","স্টাইলিশ ব্যাগপ্যাক"],["💅","নেইল পলিশ","রঙিন নেইল পলিশ সেট"],["🪞","ভ্যানিটি আয়না","সাজার আয়না"],["🎁","সারপ্রাইজ বক্স","সারপ্রাইজ গিফট বক্স"],["☕","কাস্টম মগ","নাম লেখা মগ"],["📓","ডায়েরি","সুন্দর ডায়েরি"],["✏️","স্টেশনারি","কলম, নোটবুক, স্টিকার"],["💻","ল্যাপটপ","ল্যাপটপ বা ট্যাব"],["📷","ক্যামেরা","ছবি তোলার ক্যামেরা"],["🧋","বাবল টি","বাবল টি ট্রিট"],["🍦","আইসক্রিম","আইসক্রিম পার্টি"],["🌿","ইনডোর প্লান্ট","ছোট্ট গাছ"],["🔊","ব্লুটুথ স্পিকার","গান শোনার স্পিকার"],["🧳","ঘুরতে যাওয়া","একসাথে ঘুরতে যাওয়া"],["🛍️","শপিং ভাউচার","পছন্দমতো কেনাকাটা"]);
+const ch=new Set();
+function pdone(){const L=[...ch].sort((a,b)=>a-b).map(i=>PR[i]),o=$("other").value.trim(),a=$("psend");
+$("plist").textContent=L.length?"তোমার বাছাই: "+L.map(q=>q[0]+" "+q[1]).join(", "):"";
+if(L.length||o){let t="জাকারিয়া, আমার সবচেয়ে পছন্দের জিনিস:\n"+L.map((q,k)=>(k+1)+". "+q[0]+" "+q[1]+" ("+q[2]+")").join("\n");if(o)t+="\nআর অন্য পছন্দ: "+o;T.psend=t;a.style.display="inline-block"}else{T.psend="";a.style.display="none"}refresh()}
+$("other").addEventListener("input",pdone);
+PR.forEach((q,i)=>{const b=document.createElement("button");b.className="pr";b.innerHTML="<span>"+q[0]+"</span>"+q[1]+"<small>"+q[2]+"</small>";b.onclick=e=>{ch.has(i)?ch.delete(i):ch.add(i);b.classList.toggle("sel");pdone();if(!RM)spark(e.clientX,e.clientY,12)};$("prod").appendChild(b)});
+$("psend").addEventListener("click",()=>burst(120));
+refresh();
+$("again").onclick=()=>burst(240);
+</script>
+</body>
+</html>
